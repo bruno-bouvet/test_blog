@@ -2,20 +2,20 @@
 
 namespace BlogBundle\Entity;
 
-/**
- * @ORM\Entity(repositoryClass="BlogBundle\Repository\PostRepository")
- * @ORM\Table(name="post")
- * @ORM\HasLifecycleCallbacks()
- */
+
 class Post
 {
-
+///**
+//* @ORM\Entity(repositoryClass="BlogBundle\Repository\PostRepository")
+//* @ORM\Table(name="post")
+//* @ORM\HasLifecycleCallbacks()
+//*/
 //    public function __construct()
 //    {
-//        $this->setCreated(new \DateTime());
-//        $this->setUpdated(new \DateTime());
+//        $this->setTitle($title);
+////        $this->setUpdated(new \DateTime());
 //    }
-//
+
 //    /**
 //     * @ORM\preUpdate
 //     */
@@ -42,7 +42,7 @@ class Post
     ////////////AUTO GENERATED /////////////
     ///////////////////////////////////////
 
-   
+
     /**
      * @var integer
      */
@@ -64,11 +64,6 @@ class Post
     private $post;
 
     /**
-     * @var string
-     */
-    private $image;
-
-    /**
      * @var \DateTime
      */
     private $date;
@@ -77,6 +72,11 @@ class Post
      * @var string
      */
     private $comment;
+
+    /**
+     * @var \BlogBundle\Entity\Image
+     */
+    private $image;
 
 
     /**
@@ -152,30 +152,6 @@ class Post
     }
 
     /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Post
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set date
      *
      * @param \DateTime $date
@@ -221,5 +197,29 @@ class Post
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \BlogBundle\Entity\Image $image
+     *
+     * @return Post
+     */
+    public function setImage(\BlogBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \BlogBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

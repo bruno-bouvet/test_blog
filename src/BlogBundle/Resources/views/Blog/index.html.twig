@@ -8,7 +8,7 @@
                 <h2><a href="{{ path('blog_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
             </header>
 
-            <img src="{{ asset(['images/', post.image]|join) }}" />
+            <img src="{{ post.image }}" />
             <div class="snippet">
                 <p>{{ post.post(500) }}</p>
                 <p class="continue"><a href="{{ path('blog_show', { 'id': post.id }) }}">Continue reading...</a></p>

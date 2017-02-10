@@ -54,15 +54,16 @@ class BlogController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $post = $em->getRepository('BlogBundle:Post')->find($id);
+        $image = $em->getRepository('BlogBundle:Image')->find($id);
 
 //        if (!$post) {
 //            throw $this->createNotFoundException('Unable to find Blog post.');
 //        }
 
         return $this->render('@Blog/Blog/show.html.twig', array(
-            'post'      => $post,
+            'post'  => $post,
+            'image' => $image,
         ));
     }
 
@@ -70,10 +71,11 @@ class BlogController extends Controller
      * Creates a new blog entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction( )
     {
         $post = new Post();
         $form = $this->createForm('BlogBundle\Form\PostType', $post);
+        $request = $this->get('request');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -81,7 +83,7 @@ class BlogController extends Controller
             $em->persist($post);
             $em->flush($post);
 
-            return $this->redirectToRoute('blog_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('blog_new', array('id' => $post->getId()));
         }
 
         return $this->render('@Blog/Blog/new.html.twig', array(
@@ -89,6 +91,30 @@ class BlogController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+//    /**
+//     * Displays a form to edit an existing blog entity.
+//     *
+//     */
+//    public function editAction(Post $post)
+//    {
+//        $deleteForm = $this->createDeleteForm($post);
+//        $editForm = $this->createForm('BlogBundle\Form\blogType', $post);
+//        $request = $this->get('request');
+//        $editForm->handleRequest($request);
+//
+//        if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $this->getDoctrine()->getManager()->flush();
+//
+//            return $this->redirectToRoute('blog_edit', array('id' => $post->getId()));
+//        }
+//
+//        return $this->render('@Eurotrade/blog/edit.html.twig', array(
+//            'blog' => $blog,
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
 
 
 }

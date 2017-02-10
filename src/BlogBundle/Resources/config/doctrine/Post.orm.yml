@@ -12,16 +12,20 @@ BlogBundle\Entity\Post:
         title:
             type: string
             length: '50'
+            nullable: false
         author:
             type: string
             length: 255
         post:
             type: text
-        image:
-            type: string
-            length: '50'
         date:
             type: datetime
+            nullable: true
         comment:
             type: text
+            nullable: true
+    oneToOne:
+        image:
+            targetEntity: BlogBundle\Entity\Image
+            mappedBy: post
     lifecycleCallbacks: {  }

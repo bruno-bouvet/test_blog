@@ -24,8 +24,9 @@ class Contact
     ////////////////////////////////////////
     ////////////AUTO GENERATED /////////////
     ///////////////////////////////////////
+   
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -53,7 +54,7 @@ class Contact
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
