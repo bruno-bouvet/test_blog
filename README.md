@@ -1,9 +1,11 @@
 blog
 ====
 
-A Symfony project created on February 9, 2017, 6:17 pm.
+A Symfony 2.8 project created on February 9, 2017, 6:17 pm.
 
-To install: 
+This is a test project and an empty blog with contact form.
+
+To install it: 
 
 composer install
 
