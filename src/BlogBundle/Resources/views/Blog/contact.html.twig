@@ -8,4 +8,17 @@
     </header>
 
     {#<p>Want to contact e?</p>#}
+
+    <form action="{{ path('blog_contact') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input class="btn btn-primary" type="submit" />
+    </form>
 {% endblock %}

@@ -1,13 +1,25 @@
 blog_homepage:
     path:     /
-    defaults: { _controller: BlogBundle:Blog:index }
-    requirements:
-        method:  GET
+    defaults: { _controller: "BlogBundle:Blog:index" }
+    methods:  GET
 
 blog_about:
     path:     /about
-    defaults: { _controller: BlogBundle:Blog:about }
+    defaults: { _controller: "BlogBundle:Blog:about" }
 
 blog_contact:
     path:     /contact
-    defaults: { _controller: BlogBundle:Blog:contact }
+    defaults: { _controller: "BlogBundle:Blog:contact" }
+    methods:  [GET, POST]
+
+BlogBundle_blog_show:
+    path:  /{id}
+    defaults: { _controller: "BlogBundle:Blog:show" }
+    requirements:
+        page: '\d+'
+
+
+BlogBundle_blog_new:
+    path:     /new
+    defaults: { _controller: "BlogBundle:Blog:new" }
+    methods:  [GET, POST]

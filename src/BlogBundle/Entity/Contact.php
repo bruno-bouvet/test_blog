@@ -2,11 +2,28 @@
 
 namespace BlogBundle\Entity;
 
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+
 /**
  * Contact
  */
 class Contact
 {
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+        $metadata->addPropertyConstraint('email', new Email(array(
+            'message' => 'Please give us a real email'
+        )));
+        $metadata->addPropertyConstraint('subject', new NotBlank());
+
+    }
+
+    ////////////////////////////////////////
+    ////////////AUTO GENERATED /////////////
+    ///////////////////////////////////////
     /**
      * @var int
      */
