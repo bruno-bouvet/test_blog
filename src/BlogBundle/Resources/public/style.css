@@ -29,7 +29,13 @@ body { line-height: 1;font-family: "Roboto Slab", "Helvetica Neue", Helvetica, A
 { line-height: 1.2em; font-size: 32px; margin-bottom: 10px; font-weight: normal; color: #337AB7; }
 .main-col p { line-height: 1.5em; margin-bottom: 20px; }
 
-#footer { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 10px; color: #aaa; }
+#footer { border-top: 1px solid #337AB7;
+    clear: both;
+    text-align: right;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #337AB7;
+}
 
 .align {
     display: inline-flex;
