@@ -3,11 +3,13 @@
 namespace BlogBundle\Controller;
 
 use BlogBundle\Entity\Post;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BlogBundle\Entity\Contact;
 use BlogBundle\Form\ContactType;
-use Symfony\Component\BrowserKit\Request;
-use BlogBundle\Repository;
+use BlogBundle\Form\PostType;
+use BlogBundle\Form\DeleteType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class BlogController extends Controller
 {
@@ -92,29 +94,60 @@ class BlogController extends Controller
         ));
     }
 
-//    /**
-//     * Displays a form to edit an existing blog entity.
-//     *
-//     */
-//    public function editAction(Post $post)
-//    {
-//        $deleteForm = $this->createDeleteForm($post);
-//        $editForm = $this->createForm('BlogBundle\Form\blogType', $post);
-//        $request = $this->get('request');
-//        $editForm->handleRequest($request);
-//
-//        if ($editForm->isSubmitted() && $editForm->isValid()) {
-//            $this->getDoctrine()->getManager()->flush();
-//
-//            return $this->redirectToRoute('blog_edit', array('id' => $post->getId()));
-//        }
-//
-//        return $this->render('@Eurotrade/blog/edit.html.twig', array(
-//            'blog' => $blog,
-//            'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
+    /**
+     * Displays a form to edit an existing blog entity.
+     *
+     */
+    public function editAction(Request $request, Post $post)
+    {
+        $deleteForm = $this->createDeleteForm($post);
+        $editForm = $this->createForm('BlogBundle\Form\PostType', $post);
+        $editForm->handleRequest($request);
 
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('blog_edit', array('id' => $post->getId()));
+        }
+
+        return $this->render('@Blog/Blog/edit.html.twig', array(
+            'blog' => $post,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a blog entity.
+     *
+     */
+    public function deleteAction(Request $request, Post $post)
+    {
+        $form = $this->createDeleteForm($post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($post);
+            $em->flush($post);
+        }
+
+        return $this->redirectToRoute('blog_homepage');
+    }
+    /**
+     * Creates a form to delete a blog entity.
+     *
+     * @param post $post The blog entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Post $post)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('blog_delete', array('id' => $post->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
 
 }
