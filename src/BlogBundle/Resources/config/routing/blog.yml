@@ -24,8 +24,4 @@
 #        page: '\d+'
 
 
-BlogBundle_blog_show:
-    path:  /{id}
-    defaults: { _controller: "BlogBundle:Blog:show" }
-    requirements:
-        page: '\d+'
+

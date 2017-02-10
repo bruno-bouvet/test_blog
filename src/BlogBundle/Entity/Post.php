@@ -3,7 +3,7 @@
 namespace BlogBundle\Entity;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\PostRepository")
  * @ORM\Table(name="post")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -42,8 +42,9 @@ class Post
     ////////////AUTO GENERATED /////////////
     ///////////////////////////////////////
 
+   
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -81,7 +82,7 @@ class Post
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -149,8 +150,6 @@ class Post
 
         return $this;
     }
-
-
 
     /**
      * Set image
@@ -224,4 +223,3 @@ class Post
         return $this->comment;
     }
 }
-

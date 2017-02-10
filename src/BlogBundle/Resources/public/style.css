@@ -7,7 +7,7 @@ body { line-height: 1;font-family: "Roboto Slab", "Helvetica Neue", Helvetica, A
 #wrapper a { text-decoration: none; color: #337AB7; }
 #wrapper span.highlight { color: #337AB7; }
 
-#header { border-bottom: 1px solid #ccc; margin-bottom: 20px; }
+#header { border-bottom: 1px solid #337AB7; margin-bottom: 20px; }
 #header .top { border-bottom: 1px solid #ccc; margin-bottom: 10px; }
 #header ul.navigation { list-style: none; text-align: right; }
 #header .navigation li { display: inline }

@@ -7,20 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BlogBundle\Entity\Contact;
 use BlogBundle\Form\ContactType;
 use Symfony\Component\BrowserKit\Request;
+use BlogBundle\Repository;
 
 class BlogController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()
-            ->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();
 
-        $posts = $em->createQueryBuilder()
-            ->select('b')
-            ->from('BlogBundle:Post',  'b')
-//            ->addOrderBy('b.created', 'DESC')
-            ->getQuery()
-            ->getResult();
+        $posts = $em->getRepository('BlogBundle:Post')->getLatestPosts();
 
         return $this->render('@Blog/Blog/index.html.twig', array(
             'posts' => $posts

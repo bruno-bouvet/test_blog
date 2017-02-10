@@ -2,6 +2,8 @@
 
 namespace BlogBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
 /**
  * PostRepository
  *
@@ -10,4 +12,16 @@ namespace BlogBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLatestPosts($limit = null)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->select('b');
+//            ->addOrderBy('b.created', 'DESC');
+
+        if (false === is_null($limit))
+            $qb->setMaxResults($limit);
+
+        return $qb->getQuery()
+            ->getResult();
+    }
 }
