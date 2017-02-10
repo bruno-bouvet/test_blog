@@ -7,7 +7,7 @@ body { line-height: 1;font-family: "Roboto Slab", "Helvetica Neue", Helvetica, A
 #wrapper a { text-decoration: none; color: #337AB7; }
 #wrapper span.highlight { color: #337AB7; }
 
-#header { border-bottom: 1px solid #ccc; margin-bottom: 20px; }
+#header { border-bottom: 1px solid #337AB7; margin-bottom: 20px; }
 #header .top { border-bottom: 1px solid #ccc; margin-bottom: 10px; }
 #header ul.navigation { list-style: none; text-align: right; }
 #header .navigation li { display: inline }
@@ -16,8 +16,12 @@ body { line-height: 1;font-family: "Roboto Slab", "Helvetica Neue", Helvetica, A
 #header h2 a { color: #000; }
 #header h3 { text-align: center; font-size: 24px; margin-bottom: 20px; font-weight: normal; }
 
-.main-col { width: 700px; display: inline-block; float: left; border-right: 1px solid #ccc; padding: 20px; margin-bottom: 20px; }
-.sidebar { width: 239px; padding: 10px; display: inline-block; }
+.main-col {
+    width: 700px;
+    display: inline-block;
+    float: left;
+    padding: 20px;
+    margin-bottom: 20px; }
 
 .main-col a { color: #337AB7; }
 .main-col h1,

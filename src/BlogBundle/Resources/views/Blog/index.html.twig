@@ -1,5 +1,26 @@
 {% extends '@Blog/layout.html.twig' %}
 
 {% block body %}
-    Blog homepage
+    {% for post in posts %}
+        <article class="blog">
+            {#<div class="date"><time datetime="{{ post.created|date('c') }}"></time></div>#}
+            <header>
+                <h2><a href="{{ path('blog_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
+            </header>
+
+            <img src="{{ post.image }}" />
+            <div class="snippet">
+                <p>{{ post.post(500) }}</p>
+                <p class="continue"><a href="{{ path('blog_show', { 'id': post.id }) }}">Continue reading...</a></p>
+            </div>
+
+            <footer class="meta">
+
+            </footer>
+        </article>
+    {% else %}
+        <p>There are no blog entries</p>
+    {% endfor %}
+
+
 {% endblock %}
