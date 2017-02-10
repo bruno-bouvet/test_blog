@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Test_blog{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% block stylesheets %}
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous"/>
+
+        <!--Appel CSS Font Awesome-->
+        <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
+              integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE"
+              crossorigin="anonymous">
+
+        <!-- Font Google -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Damion"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+
+        <!-- Appel CSS personnalisé -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/blog/style.css') }}"/>
+
+    {% endblock %}
+</head>
+<body>
+
+<section id="wrapper">
+    <header id="header">
+        <div class="top">
+            {% block navigation %}
+                <nav>
+                    <ul class="navigation">
+                        <li><a href="{{ path('blog_homepage') }}">Home</a></li>
+                        <li><a href="{{ path('blog_about') }}">About</a></li>
+                        <li><a href="{{ path('blog_contact') }}">Contact</a></li>
+                        <li><a href="{{ path('blog_new') }}">New post</a></li>
+                    </ul>
+                </nav>
+            {% endblock %}
+        </div>
+
+        <hgroup>
+            <h2>{% block blog_title %}<a href="{{ path('blog_homepage') }}">blog_test</a>{% endblock %}</h2>
+            <h3>{% block blog_tagline %}<a>Let's create a reusable blog</a>{% endblock %}</h3>
+        </hgroup>
+    </header>
+
+    <section class="main-col">
+        {% block body %}<a href="">blog_test</a>{% endblock %}
+    </section>
+
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</section>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

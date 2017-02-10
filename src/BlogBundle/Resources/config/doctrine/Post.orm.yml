@@ -1,0 +1,32 @@
+BlogBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: BlogBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '50'
+            nullable: false
+        author:
+            type: string
+            length: 255
+        post:
+            type: text
+        date:
+            type: datetime
+            nullable: true
+        comment:
+            type: text
+            nullable: true
+    oneToOne:
+        image:
+            targetEntity: BlogBundle\Entity\Image
+            mappedBy: post
+            cascade: ["remove"]
+    lifecycleCallbacks: {  }
