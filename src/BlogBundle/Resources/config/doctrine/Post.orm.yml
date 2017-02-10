@@ -28,4 +28,5 @@ BlogBundle\Entity\Post:
         image:
             targetEntity: BlogBundle\Entity\Image
             mappedBy: post
+            cascade: ["remove"]
     lifecycleCallbacks: {  }

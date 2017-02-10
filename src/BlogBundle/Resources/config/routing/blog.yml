@@ -1,27 +1,3 @@
 
-#blog_show:
-#    path:     /blog/{id}/show
-#    defaults: { _controller: "EurotradeBundle:blog:show" }
-#    methods:  GET
-
-
-#blog_edit:
-#    path:     /blog/{id}/edit
-#    defaults: { _controller: "EurotradeBundle:blog:edit" }
-#    methods:  [GET, POST]
-#
-#blog_delete:
-#    path:     /blog/{id}/delete
-#    defaults: { _controller: "EurotradeBundle:blog:delete" }
-#    methods:  DELETE
-#
-#
-#
-#BlogBundle_blog_show:
-#    path:  /{id}
-#    defaults: { _controller: "BlogBundle:Blog:show" }
-#    requirements:
-#        page: '\d+'
-
 
 

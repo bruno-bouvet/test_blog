@@ -6,12 +6,17 @@
             {#<div class="date"><time datetime="{{ post.created|date('c') }}"></time></div>#}
             <header>
                 <h2><a href="{{ path('blog_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
+                <h3>{{ post.author }}</h3>
             </header>
 
-            <img src="{{ post.image }}" />
+            <img src="{{ post.image }}" alt="{{ post.title }} image not found"/>
             <div class="snippet">
                 <p>{{ post.post(500) }}</p>
-                <p class="continue"><a href="{{ path('blog_show', { 'id': post.id }) }}">Continue reading...</a></p>
+
+                        <p class="continue"><a href="{{ path('blog_show', { 'id': post.id }) }}">Continue reading...</a>
+                        </p>
+                        <p class="editer"><a href="{{ path('blog_edit', { 'id': post.id }) }}">modifier</a></p>
+
             </div>
 
             <footer class="meta">
